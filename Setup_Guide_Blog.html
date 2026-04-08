@@ -1,0 +1,102 @@
+<html>
+<head>
+<title>How to Run a Python App from Scratch</title>
+<style>
+  body { font-family: "Calibri", "Arial", sans-serif; line-height: 1.6; padding: 20px; max-width: 800px; margin: auto; }
+  h1 { color: #2C3E50; }
+  h2 { color: #34495E; border-bottom: 1px solid #ddd; padding-bottom: 5px; }
+  p { margin-bottom: 15px; }
+  code { background-color: #f4f4f4; padding: 2px 4px; border-radius: 4px; font-family: "Consolas", monospace; }
+  pre { background-color: #f4f4f4; padding: 15px; border-radius: 4px; font-family: "Consolas", monospace; overflow-x: auto; }
+</style>
+</head>
+<body>
+
+<h1>How to Run a Python App from Scratch (A Complete Beginner's Guide)</h1>
+
+<p>So you've been handed a really cool custom Python application - maybe an interface that reads sensor data, or an automation tool - but you have <em>no idea</em> how to run it. You look at your Windows desktop, and there is no "Python" in sight. Where do you even begin?</p>
+
+<p>Don't worry! Running a Python script from scratch is much easier than it sounds.</p>
+
+<p>In this blog post, we are going completely back to basics. We will pretend your computer has absolutely no developer tools installed, and walk you step-by-step through setting up Anaconda (a fantastic, beginner-friendly Python manager), preparing your digital environment, and finally launching that custom app!</p>
+
+<h2>Step 1: Downloading Anaconda 🐍</h2>
+<p>The very first thing we need is a program that understands the Python language. Rather than dealing with complex raw Python installations, we are going to use <strong>Anaconda</strong>. Anaconda is like a virtual toolbox that not only installs Python but also makes managing different projects incredibly easy, especially if you ever want to analyze data later!</p>
+<ol>
+  <li>Open your favorite web browser and go to <a href="https://www.anaconda.com/download">anaconda.com/download</a>.</li>
+  <li>Look for the download button for Windows and click it. It will download an <code>.exe</code> installer. <br>
+  <em>(Note: This is a robust toolbox, so the download might be close to a gigabyte. Give it a few minutes!)</em></li>
+</ol>
+
+<h2>Step 2: Installing Anaconda 💻</h2>
+<p>Now that we have the installer, let's get it onto your machine.</p>
+<ol>
+  <li>Double-click the downloaded <code>.exe</code> file to start the installation.</li>
+  <li>Click <strong>Next</strong>, and then click <strong>I Agree</strong> to the terms.</li>
+  <li>When it asks who to install it for, select <strong>Just Me (recommended)</strong>. Click <strong>Next</strong>.</li>
+  <li>It will show a default destination folder (usually somewhere in your <code>C:</code> drive). Leave it exactly as it is and click <strong>Next</strong>.</li>
+  <li>On the <strong>Advanced Options</strong> screen, leave all the boxes at their default settings. We don't want to accidentally change how your Windows computer operates behind the scenes!</li>
+  <li>Click <strong>Install</strong>. Grab a coffee or tea - this can take anywhere from 5 to 15 minutes to fully configure itself.</li>
+</ol>
+
+<h2>Step 3: Opening the "Anaconda Prompt" ⬛</h2>
+<p>In movies, you see hackers typing furiously into black screens with green text. We are going to do something similar - but much friendlier!</p>
+<ol>
+  <li>Open your standard <strong>Windows Start Menu</strong>.</li>
+  <li>Type <strong>Anaconda Prompt</strong> into the search bar.</li>
+  <li>You will see an app with a black icon pop up. Click it!</li>
+</ol>
+<p>A black window will open. Look closely at the very left side of the blinking cursor. You should see the word <code>(base)</code>. This means Anaconda is successfully running its default environment!</p>
+
+<h2>Step 4: Creating a "Clean Room" For Your App 🧹</h2>
+<p>Imagine trying to bake a cake, make a pizza, and cook a soup all in the exact same bowl. It would be a disaster! In Python, different apps sometimes require different versions of tools. To keep things clean, we create a fresh "environment" - think of it as a virtual clean room just for this specific app.</p>
+
+<p>In your Anaconda Prompt window, type the following text exactly as written and press <strong>Enter</strong>:</p>
+
+<pre><code>conda create -n my_app python=3.11</code></pre>
+
+<p><em>(Here, <code>my_app</code> is simply the name of our clean room, and <code>python=3.11</code> tells Anaconda to put the 3.11 version of Python inside it).</em></p>
+
+<p>After a few seconds, it will pause and ask: <code>Proceed ([y]/n)?</code>. <br>
+Type <strong>y</strong> and press <strong>Enter</strong> to confirm.</p>
+
+<h2>Step 5: Turning On the Environment 💡</h2>
+<p>Now that the room is built, we need to step inside it. Tell Anaconda to activate the environment by typing:</p>
+
+<pre><code>conda activate my_app</code></pre>
+
+<p>Press <strong>Enter</strong>. Look at the left side of your screen again - the <code>(base)</code> text has magically transformed into <code>(my_app)</code>! You are now inside your custom app environment.</p>
+
+<h2>Step 6: Navigating to Your Code Folder 📁</h2>
+<p>Your computer's command prompt needs to know <em>where</em> your Python application is saved. We have to steer it into the correct folder using the "Change Directory" (<code>cd</code>) command.</p>
+<ol>
+  <li>Find the folder on your computer where your Python files are saved (<code>my_script.py</code>, <code>requirements.txt</code>, etc.).</li>
+  <li>Click the top address bar in your Windows folder and copy the entire file path.</li>
+  <li>In your Anaconda Prompt, type <code>cd</code>, press the Spacebar, type a quotation mark <code>"</code>, paste your folder path, and end with a quotation mark <code>"</code>.</li>
+</ol>
+<p>It should look something like this:</p>
+<pre><code>cd "C:\Path\To\Your\Application\Folder"</code></pre>
+<p>Press <strong>Enter</strong>. The text on the screen will change to show you are now operating "inside" that folder.</p>
+
+<h2>Step 7: Reading the Instruction Manual (Dependencies) 📚</h2>
+<p>Many Python apps rely on "helper" code written by other people, like tools to draw interfaces or read hardware ports. These helpers are called dependencies. Luckily, developers usually leave a list of these helpers inside a file called <code>requirements.txt</code>.</p>
+
+<p>We can tell Python to read this list and automatically download everything we need! Type this command and press <strong>Enter</strong>:</p>
+
+<pre><code>pip install -r requirements.txt</code></pre>
+
+<p>You'll see a bunch of downloading progress bars pop up on the screen. Let it run until it returns you to the normal blinking cursor. All the puzzle pieces are now officially in place.</p>
+
+<h2>Step 8: Liftoff! 🚀</h2>
+<p>You've built the environment, navigated to the folder, and gathered your dependencies. There is only one thing left to do.</p> 
+
+<p>Type the command to run your specific application file (in this case, <code>my_script.py</code>) and hit <strong>Enter</strong>:</p>
+
+<pre><code>python my_script.py</code></pre>
+
+<p>Suddenly, a brand new graphical window will spring to life on your desktop! You've successfully taken a raw script and built everything required to run it from absolute scratch.</p>
+
+<p>Give yourself a massive pat on the back. Welcome to the world of Python! 🎉</p>
+
+</body>
+</html>
